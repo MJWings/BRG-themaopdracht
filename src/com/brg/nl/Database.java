@@ -1,3 +1,4 @@
+package com.brg.nl;
 
 public class Database {
  private String name;

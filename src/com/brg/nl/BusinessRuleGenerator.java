@@ -1,3 +1,4 @@
+package com.brg.nl;
 
 public class BusinessRuleGenerator {
  private String name;

@@ -1,3 +1,4 @@
+package com.brg.nl;
 public class Language {
 	private String name;
  public Language(String nm){

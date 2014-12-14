@@ -1,3 +1,4 @@
+package com.brg.nl;
 
 public class Trigger {
  private String name;
