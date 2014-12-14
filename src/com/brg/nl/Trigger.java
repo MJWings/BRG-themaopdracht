@@ -6,8 +6,8 @@ public class Trigger {
  private boolean toBeExecuted;
  
  public Trigger(String nm, String pt, boolean tbe){
-	 name = nm;
-	 path = pt;
+	 setName(nm);
+	 setPath(pt);
 	 toBeExecuted = tbe;
  }
  
@@ -28,4 +28,20 @@ public class Trigger {
  public void check(){
 	 
  }
+
+public String getName() {
+	return name;
+}
+
+public void setName(String name) {
+	this.name = name;
+}
+
+public String getPath() {
+	return path;
+}
+
+public void setPath(String path) {
+	this.path = path;
+}
 }
