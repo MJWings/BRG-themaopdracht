@@ -4,13 +4,17 @@ import java.io.*;
 import java.util.*;
 
 public class Trigger {
- private String name;
- private String generator;
- private String application;
- private String entity;
- private String generatedObject;
- private String ruleType;
- private String countNumber;
+ private String triggerName;
+ private String comment;
+ private String declaredMethod;
+ private String triggerEvent;
+ private String column;
+ private String table;
+ private String attribute;
+ private String operator;
+ private String valueOne;
+ private String valueTwo;
+ private String errorMessage;
  private String path;
  private boolean toBeExecuted;
  
@@ -25,54 +29,6 @@ public class Trigger {
 	 setPath(pt);
 	 setToBeExecuted(tbe);
  }
- 
- public String getGenerator() {
-	return generator;
-}
-
-public void setGenerator(String generator) {	
-	this.generator = generator;
-}
-
-public String getApplication() {
-	return application;
-}
-
-public void setApplication(String application) {
-	this.application = application;
-}
-
-public String getCountNumber() {
-	return countNumber;
-}
-
-public String getGeneratedObject() {
-	return generatedObject;
-}
-
-public void setGeneratedObject(String generatedObject) {
-	this.generatedObject = generatedObject;
-}
-
-public void setCountNumber(String countNumber) {
-	this.countNumber = countNumber;
-}
-
-public String getEntity() {
-	return entity;
-}
-
-public void setEntity(String entity) {
-	this.entity = entity;
-}
-
-public String getRuleType() {
-	return ruleType;
-}
-
-public void setRuleType(String ruleType) {
-	this.ruleType = ruleType;
-}
 
 public String read(){
 	 String s = "";
@@ -103,13 +59,12 @@ public String read(){
 	 return b;
  }
 
-public String getName() {
-	return name;
+public String getTriggerName() {
+	return triggerName;
 }
 
-public void setName(String name) {
-	name = 
-	this.name = name;
+public void setName(String triggerName) {
+	this.triggerName = triggerName;
 }
 
 public String getPath() {
@@ -126,5 +81,85 @@ public boolean isToBeExecuted() {
 
 public void setToBeExecuted(boolean toBeExecuted) {
 	this.toBeExecuted = toBeExecuted;
+}
+
+public String getComment() {
+	return comment;
+}
+
+public void setComment(String comment) {
+	this.comment = comment;
+}
+
+public String getDeclaredMethod() {
+	return declaredMethod;
+}
+
+public void setDeclaredMethod(String declaredMethod) {
+	this.declaredMethod = declaredMethod;
+}
+
+public String getTriggerEvent() {
+	return triggerEvent;
+}
+
+public void setTriggerEvent(String triggerEvent) {
+	this.triggerEvent = triggerEvent;
+}
+
+public String getColumn() {
+	return column;
+}
+
+public void setColumn(String column) {
+	this.column = column;
+}
+
+public String getTable() {
+	return table;
+}
+
+public void setTable(String table) {
+	this.table = table;
+}
+
+public String getAttribute() {
+	return attribute;
+}
+
+public void setAttribute(String attribute) {
+	this.attribute = attribute;
+}
+
+public String getOperator() {
+	return operator;
+}
+
+public void setOperator(String operator) {
+	this.operator = operator;
+}
+
+public String getValueOne() {
+	return valueOne;
+}
+
+public void setValueOne(String valueOne) {
+	this.valueOne = valueOne;
+}
+
+public String getValueTwo() {
+	return valueTwo;
+}
+
+public void setValueTwo(String valueTwo) {
+	this.valueTwo = valueTwo;
+}
+
+public String getErrorMessage() {
+	return errorMessage;
+}
+
+public void setErrorMessage(String errorMessage) {
+	this.errorMessage = errorMessage;
 }
 }
