@@ -1,11 +1,20 @@
 package com.brg.nl;
 
+import java.io.*;
+import java.util.*;
+
 public class Trigger {
  private String name;
  private String path;
  private boolean toBeExecuted;
  
- public Trigger(String nm, String pt, boolean tbe){
+ FileReader fr = new FileReader("Triggers.txt");
+ BufferedReader br = new BufferedReader(fr);
+ 
+ FileWriter fw =  new FileWriter("Triggers.txt");
+ PrintWriter pw = new PrintWriter(fw);
+ 
+ public Trigger(String nm, String pt, boolean tbe) throws IOException{
 	 name = nm;
 	 path = pt;
 	 toBeExecuted = tbe;
@@ -18,14 +27,25 @@ public class Trigger {
  }
  
  public void write(){
-	 
+	 pw.println("Dit is een Attribute Compare Rule");
+	 pw.close();
  }
  
  public void createTrigger(){
-	 
+	 pw.println("Dit is een Trigger voor een Attribute Compare Rule");
+	 pw.close();
  }
  
- public void check(){
-	 
+ public boolean check() throws IOException{
+	 boolean b = false;
+	 String temp = br.readLine();
+	 if(temp == null){
+		 System.out.println("Geen Trigger gevonden!");
+	 } else {
+		 System.out.println("Trigger is gecontroleerd!");
+		 b = true;
+	 }
+	 br.close();
+	 return b;
  }
 }

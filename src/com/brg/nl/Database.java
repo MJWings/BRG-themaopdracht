@@ -32,7 +32,7 @@ public class Database {
  
  public boolean hasDatabase(String ipAdress, String db){
 	 boolean b = false;
-	 
+	 //code nog niet geschreven
 	 return b;
  }
  
