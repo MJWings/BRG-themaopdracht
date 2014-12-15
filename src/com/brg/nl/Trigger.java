@@ -15,9 +15,9 @@ public class Trigger {
  PrintWriter pw = new PrintWriter(fw);
  
  public Trigger(String nm, String pt, boolean tbe) throws IOException{
-	 name = nm;
-	 path = pt;
-	 toBeExecuted = tbe;
+	 setName(nm);
+	 setPath(pt);
+	 setToBeExecuted(tbe);
  }
  
  public String read(){
@@ -48,4 +48,28 @@ public class Trigger {
 	 br.close();
 	 return b;
  }
+
+public String getName() {
+	return name;
+}
+
+public void setName(String name) {
+	this.name = name;
+}
+
+public String getPath() {
+	return path;
+}
+
+public void setPath(String path) {
+	this.path = path;
+}
+
+public boolean isToBeExecuted() {
+	return toBeExecuted;
+}
+
+public void setToBeExecuted(boolean toBeExecuted) {
+	this.toBeExecuted = toBeExecuted;
+}
 }
