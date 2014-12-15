@@ -5,6 +5,12 @@ import java.util.*;
 
 public class Trigger {
  private String name;
+ private String generator;
+ private String application;
+ private String entity;
+ private String generatedObject;
+ private String ruleType;
+ private String countNumber;
  private String path;
  private boolean toBeExecuted;
  
@@ -20,7 +26,55 @@ public class Trigger {
 	 setToBeExecuted(tbe);
  }
  
- public String read(){
+ public String getGenerator() {
+	return generator;
+}
+
+public void setGenerator(String generator) {	
+	this.generator = generator;
+}
+
+public String getApplication() {
+	return application;
+}
+
+public void setApplication(String application) {
+	this.application = application;
+}
+
+public String getCountNumber() {
+	return countNumber;
+}
+
+public String getGeneratedObject() {
+	return generatedObject;
+}
+
+public void setGeneratedObject(String generatedObject) {
+	this.generatedObject = generatedObject;
+}
+
+public void setCountNumber(String countNumber) {
+	this.countNumber = countNumber;
+}
+
+public String getEntity() {
+	return entity;
+}
+
+public void setEntity(String entity) {
+	this.entity = entity;
+}
+
+public String getRuleType() {
+	return ruleType;
+}
+
+public void setRuleType(String ruleType) {
+	this.ruleType = ruleType;
+}
+
+public String read(){
 	 String s = "";
 	 
 	 return s;
@@ -54,6 +108,7 @@ public String getName() {
 }
 
 public void setName(String name) {
+	name = 
 	this.name = name;
 }
 
