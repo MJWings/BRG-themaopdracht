@@ -1,0 +1,14 @@
+%comment% %triggerName%
+declare
+	%declaredMethod%
+begin
+	if %triggerEvent% -- %COLUMN% %TABLE%
+	then
+		%comment%
+		%attribute% %operator% %VALUE1% AND %VALUE2%;
+		if not l_passed
+		then
+			l_error_stack := l_error_stack || '%errorMessage%';
+		end if;
+	end if;
+end;

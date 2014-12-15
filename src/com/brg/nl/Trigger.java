@@ -4,121 +4,65 @@ import java.io.*;
 import java.util.*;
 
 public class Trigger {
- private String name;
- private String generator;
- private String application;
- private String entity;
- private String generatedObject;
- private String ruleType;
- private String countNumber;
+ private String triggerName;
+ private String comment;
+ private String declaredMethod;
+ private String triggerEvent;
+ private String column;
+ private String table;
+ private String attribute;
+ private String operator;
+ private String valueOne;
+ private String valueTwo;
+ private String errorMessage;
  private String path;
  private boolean toBeExecuted;
  
- FileReader fr = new FileReader("Triggers.txt");
- BufferedReader br = new BufferedReader(fr);
- 
- FileWriter fw =  new FileWriter("Triggers.txt");
- PrintWriter pw = new PrintWriter(fw);
+ File input = new File("template.txt");
+ File output =  new File("Triggers.txt");
+ PrintWriter printer = new PrintWriter(output);
  
  ArrayList<String> regel = new ArrayList<String>();
  
- public Trigger(String nm, String pt, boolean tbe) throws IOException{
+ public Trigger(String nm, String string, boolean tbe) throws IOException{
 	 setName(nm);
-	 setPath(pt);
+	 setPath(string);
 	 setToBeExecuted(tbe);
  }
- 
- public String getGenerator() {
-	return generator;
-}
 
-public void setGenerator(String generator) {	
-	this.generator = generator;
-}
-
-public String getApplication() {
-	return application;
-}
-
-public void setApplication(String application) {
-	this.application = application;
-}
-
-public String getCountNumber() {
-	return countNumber;
-}
-
-public String getGeneratedObject() {
-	return generatedObject;
-}
-
-public void setGeneratedObject(String generatedObject) {
-	this.generatedObject = generatedObject;
-}
-
-public void setCountNumber(String countNumber) {
-	this.countNumber = countNumber;
-}
-
-public String getEntity() {
-	return entity;
-}
-
-public void setEntity(String entity) {
-	this.entity = entity;
-}
-
-public String getRuleType() {
-	return ruleType;
-}
-
-public void setRuleType(String ruleType) {
-	this.ruleType = ruleType;
-}
-
-public String read() throws IOException{
-	String s = "";
-	while(true){
-		String temp = br.readLine();
-		if(temp == null){
-			break;
-		}
+public void read() throws IOException{
+	Scanner scan = new Scanner(input);
+	while(scan.hasNextLine()){
+		String temp = scan.nextLine();
 		
-		regel.add(temp);
-		Scanner scan = new Scanner(temp);
-		scan.useDelimiter("%");
-		String templateVar = scan.next();
-		String var = "";
-		switch(var){
-		case "comment": var = "Insert comment here"; break;
-		case "triggerName": var = "BRG_VBMG_PRT_ARNG_01"; break;
-		case "declaredMethod": var = ""; break;
-		case "triggerEvent": var = ""; break;
-		case "COLUMN": var = "Grade"; break;
-		case "TABLE": var = "Student"; break;
-		case "attribute": var = ""; break;
-		case "operator": var = ""; break;
-		case "VALUE1": var = "1"; break;
-		case "VALUE2": var = "10"; break;
-		case "errorMessage": var = "The rule is not approved"; break;
-		default: var = ""; break;
-		}
-		s = s + " " + var;
+		temp = temp.replace("%comment%", "-- This is a trigger");
+		temp = temp.replace("%triggerName%", "BRG_VBMG_PRT_ARNG_01");
+		temp = temp.replace("%declaredMethod%", "l_passed	boolean := true;");
+		temp = temp.replace("%comment2%", "-- the value must be between one and ten");
+		temp = temp.replace("%triggerEvent%", "l_oper ('INS, UPD')");
+		temp = temp.replace("%operator%", "BETWEEN");
+		temp = temp.replace("%attribute%", "l_passed := p_tnt_row.new_cijfer");
+		temp = temp.replace("%VALUE1%", "1");
+		temp = temp.replace("%VALUE2%", "10");
+		temp = temp.replace("%errorMessage%", "the number is out of range, specify a number between 1 and 10");
+		printer.println(temp);
+		printer.flush();
 	}
-	return s;
- }
+	scan.close();
+}
  
- public void write(){
+/* public void write(){
 	 pw.println("Tentamen.cijfer mag de waarde 1 t/m 10 hebben.");
 	 pw.close();
- }
+ }*/
  
- public void createTrigger(){
+ /*public void createTrigger(){
 	 pw.println("Dit is een Trigger voor een Attribute Compare Rule");
+	 pw.println(generated);
 	 pw.close();
- }
+ }*/
  
- public boolean check() throws IOException{
+/* public boolean check() throws IOException{
 	 boolean b = false;
 	 String temp = br.readLine();
 	 if(temp == null){
@@ -129,23 +73,22 @@ public String read() throws IOException{
 	 }
 	 br.close();
 	 return b;
- }
+ } */
 
-public String getName() {
-	return name;
+public String getTriggerName() {
+	return triggerName;
 }
 
-public void setName(String name) {
-	name = 
-	this.name = name;
+public void setName(String triggerName) {
+	this.triggerName = triggerName;
 }
 
 public String getPath() {
 	return path;
 }
 
-public void setPath(String path) {
-	this.path = path;
+public void setPath(String string) {
+	this.path = string;
 }
 
 public boolean isToBeExecuted() {
@@ -154,5 +97,85 @@ public boolean isToBeExecuted() {
 
 public void setToBeExecuted(boolean toBeExecuted) {
 	this.toBeExecuted = toBeExecuted;
+}
+
+public String getComment() {
+	return comment;
+}
+
+public void setComment(String comment) {
+	this.comment = comment;
+}
+
+public String getDeclaredMethod() {
+	return declaredMethod;
+}
+
+public void setDeclaredMethod(String declaredMethod) {
+	this.declaredMethod = declaredMethod;
+}
+
+public String getTriggerEvent() {
+	return triggerEvent;
+}
+
+public void setTriggerEvent(String triggerEvent) {
+	this.triggerEvent = triggerEvent;
+}
+
+public String getColumn() {
+	return column;
+}
+
+public void setColumn(String column) {
+	this.column = column;
+}
+
+public String getTable() {
+	return table;
+}
+
+public void setTable(String table) {
+	this.table = table;
+}
+
+public String getAttribute() {
+	return attribute;
+}
+
+public void setAttribute(String attribute) {
+	this.attribute = attribute;
+}
+
+public String getOperator() {
+	return operator;
+}
+
+public void setOperator(String operator) {
+	this.operator = operator;
+}
+
+public String getValueOne() {
+	return valueOne;
+}
+
+public void setValueOne(String valueOne) {
+	this.valueOne = valueOne;
+}
+
+public String getValueTwo() {
+	return valueTwo;
+}
+
+public void setValueTwo(String valueTwo) {
+	this.valueTwo = valueTwo;
+}
+
+public String getErrorMessage() {
+	return errorMessage;
+}
+
+public void setErrorMessage(String errorMessage) {
+	this.errorMessage = errorMessage;
 }
 }

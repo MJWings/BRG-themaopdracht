@@ -9,18 +9,18 @@ public class BusinessRuleGenerator{
  
  public BusinessRuleGenerator(String nm) throws IOException{
 	 setName(nm);
-	 ArrayList<Trigger> triggers = new ArrayList<Trigger>();
+	 triggers = new ArrayList<Trigger>();
  }
  
  public void generate(String lan, String repDB){
 	 System.out.println("De nodige Business Rules zijn nu in de juiste taal in triggers geplaatst.");
  }
  
- public void execute(){
+ public void execute() throws IOException{
 	 System.out.println("De business rules zijn nu in de target database gezet.");
 	 for(Trigger t: triggers){
 		 if(t != null){
-			 t.write();
+			 t.read();
 		 } else {
 			 break;
 		 }
@@ -32,7 +32,7 @@ public class BusinessRuleGenerator{
 	 triggers.add(new Trigger(name, path, toBeExecuted));
  }
  
- public void checkTrigger() throws IOException{
+ /*public void checkTrigger() throws IOException{
 	 for(Trigger t: triggers){
 		 if(t != null){
 			 t.check();
@@ -40,7 +40,7 @@ public class BusinessRuleGenerator{
 			 break;
 		 }
 	 }
- }
+ } */
 
 public String getName() {
 	return name;
