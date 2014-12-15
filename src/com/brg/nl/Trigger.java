@@ -20,6 +20,8 @@ public class Trigger {
  FileWriter fw =  new FileWriter("Triggers.txt");
  PrintWriter pw = new PrintWriter(fw);
  
+ ArrayList<String> regel = new ArrayList<String>();
+ 
  public Trigger(String nm, String pt, boolean tbe) throws IOException{
 	 setName(nm);
 	 setPath(pt);
@@ -74,10 +76,36 @@ public void setRuleType(String ruleType) {
 	this.ruleType = ruleType;
 }
 
-public String read(){
-	 String s = "";
-	 
-	 return s;
+public String read() throws IOException{
+	String s = "";
+	while(true){
+		String temp = br.readLine();
+		if(temp == null){
+			break;
+		}
+		
+		regel.add(temp);
+		Scanner scan = new Scanner(temp);
+		scan.useDelimiter("%");
+		String templateVar = scan.next();
+		String var = "";
+		switch(var){
+		case "comment": var = "Insert comment here"; break;
+		case "triggerName": var = "BRG_VBMG_PRT_ARNG_01"; break;
+		case "declaredMethod": var = ""; break;
+		case "triggerEvent": var = ""; break;
+		case "COLUMN": var = "Grade"; break;
+		case "TABLE": var = "Student"; break;
+		case "attribute": var = ""; break;
+		case "operator": var = ""; break;
+		case "VALUE1": var = "1"; break;
+		case "VALUE2": var = "10"; break;
+		case "errorMessage": var = "The rule is not approved"; break;
+		default: var = ""; break;
+		}
+		s = s + " " + var;
+	}
+	return s;
  }
  
  public void write(){
