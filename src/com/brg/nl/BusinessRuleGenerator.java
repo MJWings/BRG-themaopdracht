@@ -1,31 +1,52 @@
 package com.brg.nl;
 
-import java.util.*;
 import java.io.*;
+import java.util.*;
 
 public class BusinessRuleGenerator{
  private String name;
- private Trigger trigger;
+ private ArrayList<Trigger> triggers;
  
  public BusinessRuleGenerator(String nm) throws IOException{
-	 name = nm;
+	 setName(nm);
+	 ArrayList<Trigger> triggers = new ArrayList<Trigger>();
  }
  
  public void generate(String lan, String repDB){
-	 System.out.println("De nodige Business Rules zijn nu in triggers geplaatst.");
+	 System.out.println("De nodige Business Rules zijn nu in de juiste taal in triggers geplaatst.");
  }
  
  public void execute(){
 	 System.out.println("De business rules zijn nu in de target database gezet.");
-	 trigger.write();
+	 for(Trigger t: triggers){
+		 if(t != null){
+			 t.write();
+		 } else {
+			 break;
+		 }
+	 }
  }
  
- public void addTrigger(){
-	 System.out.println("Dit is een Attribute Comapre Rule");
-	 trigger.createTrigger();
+ public void addTrigger(String name, String path, boolean toBeExecuted) throws IOException{
+	 System.out.println("This is an Attribute Compare Rule");
+	 triggers.add(new Trigger(name, path, toBeExecuted));
  }
  
  public void checkTrigger() throws IOException{
-	 trigger.check();
+	 for(Trigger t: triggers){
+		 if(t != null){
+			 t.check();
+		 } else {
+			 break;
+		 }
+	 }
  }
+
+public String getName() {
+	return name;
+}
+
+public void setName(String name) {
+	this.name = name;
+}
 }

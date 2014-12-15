@@ -32,6 +32,8 @@ public class Database {
  
  public boolean hasDatabase(String ipAdress, String db){
 	 boolean b = false;
+	 //if statement hier omheen
+	 b = true;
 	 //code nog niet geschreven
 	 return b;
  }

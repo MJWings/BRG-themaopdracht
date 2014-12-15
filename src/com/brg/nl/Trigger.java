@@ -37,7 +37,7 @@ public String read(){
  }
  
  public void write(){
-	 pw.println("Dit is een Attribute Compare Rule");
+	 pw.println("Tentamen.cijfer mag de waarde 1 t/m 10 hebben.");
 	 pw.close();
  }
  
